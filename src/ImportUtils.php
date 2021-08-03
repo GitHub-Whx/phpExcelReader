@@ -7,7 +7,7 @@
  * @Last  Modified time: 2021-07-22 18:46:50
  */
 
-namespace whx\phpExcelReader;
+namespace Whx\phpExcelReader;
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
