@@ -1,0 +1,23 @@
+{
+    "name": "whx/phpexcelreader",
+    "description": "A easy way to read excel data.",
+    "type": "lib",
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.18",
+        "php": ">=7.0.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "whx",
+            "email": "961029283@qq.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "whx\\phpExcelReader\\": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}
