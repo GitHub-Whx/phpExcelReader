@@ -16,7 +16,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "whx\\phpExcelReader\\": "src"
+            "Whx\\phpExcelReader\\": "src"
         }
     },
     "minimum-stability": "dev"
