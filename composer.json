@@ -3,7 +3,7 @@
     "description": "A easy way to read excel data.",
     "type": "lib",
     "require": {
-        "phpoffice/phpspreadsheet": "^1.18",
+        "phpoffice/phpspreadsheet": ">=1.15",
         "php": ">=7.0.0"
     },
     "license": "MIT",
