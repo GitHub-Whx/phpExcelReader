@@ -227,11 +227,13 @@ try {
         ->setRowIndex([
             'Sheet1'=>2
         ])
+        ->isWithRawData(true)
         ->run();
 
 }catch (\Exception $e){
 
     print_r($e->getMessage());
+
     exit();
 
 }
