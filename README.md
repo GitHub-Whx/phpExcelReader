@@ -39,13 +39,19 @@ composer require whx/phpexcelreader
 ```
 <?php
 use whx\phpExcelReader\ExcelReader;
-…………
+
+……略……
+
 try {
     $excelReader = new ExcelReader();
+
     return $excelReader->readFile('./template.xlsx')
         ->run();
+
 }catch (\Exception $e){
+
     print_r($e->getMessage());
+
     exit();
 }
 
@@ -54,14 +60,20 @@ try {
 ```
 <?php
 use whx\phpExcelReader\ExcelReader;
-…………
+
+……略……
+
 try {
     $excelReader = new ExcelReader();
+
     return $excelReader->readFile('./template.xlsx')
        ->isRaw(true)
        ->run();
+
 }catch (\Exception $e){
+
     print_r($e->getMessage());
+
     exit();
 }
 
@@ -70,15 +82,21 @@ try {
 ```
 <?php
 use whx\phpExcelReader\ExcelReader;
-…………
+
+……略……
+
 try {
     $excelReader = new ExcelReader();
+
     return $excelReader->readFile('./template.xlsx')
        ->isRaw(true)
        ->isRawDataWithCellRef(true)
        ->run();
+
 }catch (\Exception $e){
+
     print_r($e->getMessage());
+
     exit();
 }
 
@@ -88,14 +106,20 @@ try {
 ```
 <?php
 use whx\phpExcelReader\ExcelReader;
-…………
+
+……略……
+
 try {
     $excelReader = new ExcelReader();
+
     return $excelReader->readFile('./template.xlsx')
         ->getSheetDataByIndex(1)
         ->run();
+
 }catch (\Exception $e){
+
     print_r($e->getMessage());
+
     exit();
 }
 
@@ -104,15 +128,21 @@ try {
 ```
 <?php
 use whx\phpExcelReader\ExcelReader;
-…………
+
+……略……
+
 try {
     $excelReader = new ExcelReader();
+
     return $excelReader->readFile('./template.xlsx')
         ->getSheetDataByName('工作表2')
         ->run();
+
 }catch (\Exception $e){
+
     print_r($e->getMessage());
     exit();
+
 }
 
 ```
@@ -121,7 +151,9 @@ try {
 ```
 <?php
 use whx\phpExcelReader\ExcelReader;
-…………
+
+……略……
+
 try {
     $excelReader = new ExcelReader();
     return $excelReader->readFile('./template.xlsx')
@@ -137,7 +169,9 @@ try {
 ```
 <?php
 use whx\phpExcelReader\ExcelReader;
-…………
+
+……略……
+
 try {
     $excelReader = new ExcelReader();
     return $excelReader->readFile('./template.xlsx')
@@ -152,9 +186,12 @@ try {
 ```
 <?php
 use whx\phpExcelReader\ExcelReader;
-…………
+
+……略……
+
 try {
     $excelReader = new ExcelReader();
+
     return $excelReader->readFile('./template.xlsx')
         ->getBatchSheetDataByName(['工作表3','工作表2',Sheet1])
         ->setSheetTargetColumnName([
@@ -164,8 +201,11 @@ try {
             'Sheet1'=>2
         ])
         ->run();
+
 }catch (\Exception $e){
+
     print_r($e->getMessage());
+
     exit();
 }
 ```
@@ -173,9 +213,12 @@ try {
 ```
 <?php
 use whx\phpExcelReader\ExcelReader;
-…………
+
+……略……
+
 try {
     $excelReader = new ExcelReader();
+
     return $excelReader->readFile('./template.xlsx')
         ->getBatchSheetDataByName(['工作表3','工作表2',Sheet1])
         ->setSheetTargetColumnName([
@@ -185,18 +228,25 @@ try {
             'Sheet1'=>2
         ])
         ->run();
+
 }catch (\Exception $e){
+
     print_r($e->getMessage());
     exit();
+
 }
+
 ```
 - 指定日期列，指定返回的日期格式
 ```
 <?php
 use whx\phpExcelReader\ExcelReader;
-…………
+
+……略……
+
 try {
     $excelReader = new ExcelReader();
+
     return $excelReader->readFile('./template.xlsx')
         ->getBatchSheetDataByName(['工作表3','工作表2','Sheet1'])
         ->setSheetTargetColumnName([
@@ -211,8 +261,11 @@ try {
         ])
         ->setDateFormat('Y-m-d H:i:s')
         ->run();
+
 }catch (\Exception $e){
+
     print_r($e->getMessage());
+
     exit();
 }
 ```
