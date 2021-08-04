@@ -1,16 +1,16 @@
 ## [phpExcelReader](https://github.com/GitHub-Whx/phpExcelReader)
----
-### 概述
+
+## 概述
 基于 `phpoffice/phpspreadsheet` 封装的、简单的 `Excel` 数据读取
 
-### 支持的文件格式
+## 支持的文件格式
 ```
 xlsx
 xls
 csv
 ```
 
-### 功能概述
+## 功能概述
 - 支持链式调用，提高代码清晰度和开发效率
 - 支持默认表格数据读取
 - 支持指定表格索引读取数据 `getSheetDataByIndex()`
@@ -25,15 +25,15 @@ csv
 - 支持返回格式化后的数据和带列索引的原始数据
 - 支持日期类列数据转换读取，并支持指定日期格式 `->setSheetDateColumnName(['Sheet1' => ['Date'],'工作表2' => ['生日']])->setDateFormat('Y-m-d H:i:s')`
 
-### 安装方法
+## 安装方法
 ```
 composer require whx/phpexcelreader
 ```
-### 运行环境
+## 运行环境
 - PHP 7.0.0 已上版本
 - composer
 
-### 示例
+## 示例
 
 - 默认读取活跃工作表 `activeSheet` 格式化后的数据
 ```
@@ -216,8 +216,8 @@ try {
     exit();
 }
 ```
-### 问题反馈
+## 问题反馈
 请移步 [github](https://github.com/GitHub-Whx/phpExcelReader) 反馈问题 
 
-### License
+## License
 phpExcelReader is licensed under `MIT`
