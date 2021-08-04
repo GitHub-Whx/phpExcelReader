@@ -18,7 +18,7 @@ use PhpOffice\PhpSpreadsheet\Shared\Date;
 /**
  * Class ImportUtils
  */
-class ImportUtils
+class ExcelReader
 {
 
     /**
@@ -119,7 +119,12 @@ class ImportUtils
     /**
      * @var array 日期类列名数组
      */
-    private $_date_column_name = [];
+    private $_sheet_date_column_name = [];
+
+    /**
+     * @var array 当前 sheet 表的日期列数组
+     */
+    private $_curr_sheet_date_column_name = [];
 
     /**
      * @var array 结果
@@ -388,19 +393,26 @@ class ImportUtils
 
     /**
      * 设置日期类列名
-     * FuncName: setDateColumnName
+     * FuncName: setSheetDateColumnName
      * Author: Whx
      * DateTime: 2021-08-03 10:57:19
-     * @param $date_column_name
+     * @param $sheet_date_column_name
      * @return $this
      */
-    public function setDateColumnName($date_column_name){
+    public function setSheetDateColumnName($sheet_date_column_name){
 
-        $this->_date_column_name = $date_column_name;
+        $this->_sheet_date_column_name = $sheet_date_column_name;
 
         return $this;
     }
 
+    /**
+     * Decsription
+     * FuncName: run
+     * Author: Whx
+     * DateTime: 2021-08-04 10:18:10
+     * @return array
+     */
     public function run()
     {
 
@@ -426,6 +438,8 @@ class ImportUtils
         foreach ($this->_sheet_collection as $key => $collection) {
 
             $this->_curr_collection_key = $key;
+
+            $this->getCurrDateColumnName();
 
             if ($this->_is_raw) {
 
@@ -487,7 +501,6 @@ class ImportUtils
             $ret = [
                 'format_data' => $this->dataFormat($data_with_ref),
                 'raw_data' => $this->_is_raw_data_with_cell_ref ? $data_with_ref : $collection->toArray(),
-
             ];
 
 
@@ -517,13 +530,19 @@ class ImportUtils
         $this->_active_sheet_header = $data_with_ref[$this->_curr_row_index];
 
         if (!$this->_active_sheet_header) {
+
             throw new \Exception('The row index is out of range.please check it again.');
+
         }
 
         foreach ($this->_active_sheet_header as $key => $item) {  // 部分表格会读取空列数据
+
             if (!$item) {
+
                 unset($this->_active_sheet_header[$key]);
+
             }
+
         }
 
         // 获取当前 collection 的目标列名
@@ -590,6 +609,12 @@ class ImportUtils
         }
     }
 
+    /**
+     * Decsription
+     * FuncName: getCurrTargetColumnIndex
+     * Author: Whx
+     * DateTime: 2021-08-04 10:13:06
+     */
     private function getCurrTargetColumnIndex()
     {
         // 重置列索引
@@ -605,6 +630,39 @@ class ImportUtils
             }
 
         }
+    }
+
+    /**
+     * Decsription
+     * FuncName: getCurrDateColumnName
+     * Author: Whx
+     * DateTime: 2021-08-04 10:19:37
+     */
+    private function getCurrDateColumnName()
+    {
+
+        if (!$this->_is_multi_sheet) { // 单个 sheet
+
+            // 没设置，则默认为没有，否则按设置列为准
+            $this->_curr_sheet_date_column_name = $this->_sheet_date_column_name ?: [];
+
+        } else { // 多个 sheet
+
+            if (!$this->_sheet_date_column_name) { // 没设置，则默认为全部列
+
+                $this->_curr_sheet_date_column_name = [];
+
+            } else {
+
+                // 没设置对应的 sheet 列数据，则默认为无，否则按设置列为准
+                $this->_curr_sheet_date_column_name = $this->_sheet_date_column_name[$this->_curr_collection_key] ?: [];
+
+            }
+
+        }
+
+
+
     }
 
 
@@ -681,7 +739,7 @@ class ImportUtils
 
                     $column_name = $this->_active_sheet_header[$k1];
 
-                    $tmp[$column_name] = in_array($column_name,$this->_date_column_name) ?
+                    $tmp[$column_name] = in_array($column_name,$this->_curr_sheet_date_column_name) ?
                         date($this->_date_format, Date::excelToTimestamp($v1)) :
                         $v1;
 
