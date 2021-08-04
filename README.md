@@ -1,4 +1,4 @@
-## phpExcelReader
+## [phpExcelReader](https://github.com/GitHub-Whx/phpExcelReader)
 ---
 ### 概述
 基于 `phpoffice/phpspreadsheet` 封装的、简单的 `Excel` 数据读取
@@ -29,6 +29,9 @@ csv
 ```
 composer require whx/phpexcelreader
 ```
+### 运行环境
+- PHP 7.0.0 已上版本
+- composer
 
 ### 示例
 
@@ -213,3 +216,8 @@ try {
     exit();
 }
 ```
+### 问题反馈
+请移步 [github](https://github.com/GitHub-Whx/phpExcelReader) 反馈问题 
+
+### License
+phpExcelReader is licensed under `MIT`
