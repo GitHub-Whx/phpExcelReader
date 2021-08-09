@@ -13,15 +13,15 @@ csv
 ## 功能概述
 - 支持链式调用，提高代码清晰度和开发效率
 - 支持默认表格数据读取
-- 支持指定表格索引读取数据 `getSheetDataByIndex()`
-- 支持指定表格名称读取数据 `getSheetDataByName()`
-- 支持指定多个表格索引读取数据 `getBatchSheetDataByIndex()`
-- 支持指定多个表格名称读取数据 `getBatchSheetDataByName()`
-- 支持指定读取表格的列名读取数据 `setSheetTargetColumnName([ 'Sheet1' => ['Tracking NO.', 'Signed Quantity', 'Date'])` 或者 'setSheetTargetColumnName(['Tracking NO.', 'Signed Quantity', 'Date']])'
+- 支持指定表格索引读取数据 `getSheetDataByIndex(1)`
+- 支持指定表格名称读取数据 `getSheetDataByName('Sheet1')`
+- 支持指定多个表格索引读取数据 `getBatchSheetDataByIndex([1,2])`
+- 支持指定多个表格名称读取数据 `getBatchSheetDataByName(['Sheet1','Sheet3'])`
+- 支持指定读取表格的列名读取数据 `setSheetTargetColumnName([ 'Sheet1' => ['Tracking NO.', 'Signed Quantity', 'Date'])` 或者 `setSheetTargetColumnName(['Tracking NO.','Signed Quantity'])`
 - 支持指定从哪一行开始读取表格数据 `->setRowIndex(['Sheet1' => 2])` 或者 `->setRowIndex(2)`
 - 默认返回以表格索引或表格名称为键的多维数组
 - 默认返回的数据是以列名为 `key` ，单元格值作为 `value` 的数组
-- 可以指定只返回带列索引的原始数据 `isRaw()->isRawDataWithCellRef()`
+- 可以指定只返回带列索引的原始数据 `isRaw(true)->isRawDataWithCellRef(true)`
 - 支持返回格式化后的数据和带列索引的原始数据
 - 支持日期类列数据转换读取，并支持指定日期格式 `->setSheetDateColumnName(['Sheet1' => ['Date'],'工作表2' => ['生日']])->setDateFormat('Y-m-d H:i:s')`
 
@@ -30,7 +30,7 @@ csv
 composer require whx/phpexcelreader
 ```
 ## 运行环境
-- PHP 7.0.0 已上版本
+- PHP 7.0.0 以上版本
 - composer
 
 ## 示例
